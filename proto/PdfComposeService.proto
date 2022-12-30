@@ -1,0 +1,16 @@
+syntax = "proto3";
+option go_package="./pdfcompose";
+package pdfcompose;
+
+service PdfComposeService {
+ rpc MergePdf (stream File) returns (stream MergedPdf) {}
+}
+
+message File {      
+ bytes Chunk = 1;
+ int32 Size = 2;
+}
+
+message MergedPdf {
+    bytes File = 1;
+}
